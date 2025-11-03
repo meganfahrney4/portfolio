@@ -1,0 +1,213 @@
+:root{
+      --bg:#ffffff;
+      --text:#0b1220;
+      --header: #6b21a8; /* deep purple */
+      --muted:#475569;
+      --accent:#0b5fff;
+      --card:#f8fafc;
+      --focus: 3px solid #fdba74; /* visible focus */
+      --max-width:1100px;
+      --gap:1.25rem;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:1rem;
+      display:flex;
+      justify-content:center;
+    }
+
+    .site{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:var(--gap);
+      padding:1rem 0;
+    }
+
+    .brand{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+    }
+    .brand h1{
+      font-size:1.125rem;
+      margin:0;
+      letter-spacing:-0.5px;
+    }
+    .role{
+      display:block;
+      font-size:.875rem;
+      color:var(--muted);
+    }
+h1, h2 {
+  color: var(--header);
+}
+
+/* Keep article headlines neutral */
+.card h3 {
+  color: var(--text);
+}
+
+    /* Nav */
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:.5rem;
+      border-radius:6px;
+      font-size:.95rem;
+    }
+    nav a:focus{outline: none; box-shadow: var(--focus);}
+
+    /* Main layout */
+    main{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:1.5rem;
+      padding-bottom:2rem;
+    }
+
+    /* About */
+.about {
+  display: flex;
+  gap: 1.25rem;          /* space between photo and text */
+  align-items: flex-start; /* top align image and text */
+  flex-wrap: wrap;       /* on very small screens, image will sit above text */
+}
+
+.about figure {
+  margin: 0;
+  flex: 0 0 120px;       /* fixed column width for the photo */
+}
+
+.headshot {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;     /* crop/cover the square frame cleanly */
+  border-radius: 8px;
+  border: 1px solid rgba(11,17,32,0.08);
+  display: block;
+  flex-shrink: 0;        /* prevents the image from being squashed */
+}
+
+/* allow the bio column to shrink and wrap text properly */
+.bio {
+  flex: 1 1 auto;
+  min-width: 0;          /* CRITICAL: allow text to wrap and avoid overflow/overlap */
+}
+
+.bio h2 {
+  margin: 0 0 .25rem 0;
+  font-size: 1.5rem;
+}
+
+.bio p {
+  margin: .25rem 0;
+  color: var(--muted);
+}
+    /* Work cards */
+    .work-grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:1rem;
+    }
+    @media (max-width:1000px){ .work-grid{ grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:600px){ .about{grid-template-columns: 96px 1fr} .work-grid{ grid-template-columns: 1fr; } }
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:1rem;
+      box-shadow: 0 1px 0 rgba(11,17,32,0.02);
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+      min-height:140px;
+    }
+    .card h3{margin:0;font-size:1rem}
+    .deck{color:var(--muted);margin:0;font-size:.95rem}
+    .meta{font-size:.85rem;color:var(--muted);display:flex;gap:.5rem;flex-wrap:wrap}
+    .tags{margin-top:.5rem;display:flex;gap:.5rem;flex-wrap:wrap}
+    .tag{background:rgba(11,17,32,0.06);padding:.25rem .5rem;border-radius:999px;font-size:.8rem}
+
+    .card a{color:var(--accent);text-decoration:none}
+    .card a:focus{outline:none; box-shadow:var(--focus);}
+
+    /* Projects & embeds */
+    .projects{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:1rem;
+    }
+    .project-frame{
+      min-height:220px;
+      border-radius:10px;
+      border:1px dashed rgba(11,17,32,0.06);
+      padding:1rem;
+      background:#fff;
+    }
+
+    /* Resume / contact */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:1rem;
+    }
+    @media (max-width:900px){ .two-col{ grid-template-columns: 1fr; } }
+
+    .skills{display:flex;flex-wrap:wrap;gap:.5rem}
+    .skill{background:rgba(11,17,32,0.06);padding:.35rem .6rem;border-radius:999px;font-size:.85rem}
+
+    /* Contact form basics (non-functional example) */
+    .contact a{ color:var(--accent); text-decoration:none; font-weight:600; }
+    .contact a:focus{outline:none; box-shadow:var(--focus);}
+
+footer {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(11,17,32,0.08);
+  padding-top: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+
+    /* Accessibility: visible focus for keyboard users */
+    a:focus, button:focus, input:focus, textarea:focus { outline: none; box-shadow: var(--focus); border-radius:6px; }
+
+    /* Small helpers */
+    .muted{ color:var(--muted) }
+    .sr-only{ position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+  /* Optional subtle divider line */
+  hr {
+    border: none;
+    border-top: 1px solid rgba(11,17,32,0.08);
+    margin: 2.5rem 0;
+  }
+
+  section h2 {
+  font-size: 1.5rem;   /* or pick the size you like */
+  margin: 0 0 .75rem 0;
+}
+
+.brand h1 {
+  font-size: 2rem;       /* make your name stand out */
+  margin: 0;
+  letter-spacing: -0.5px;
+}
